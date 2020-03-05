@@ -11,17 +11,22 @@ import br.com.dao.ec6.crud.repositiorio.mysql.RepositorioMySQL;
 import br.com.dao.ec6.crud.repositorio.arquivo.RepositorioArquivos;
 import br.com.dao.ec6.crud.repositorio.basis.Repositorio;
 
-
 /**
  *
  * @author gabriell
  */
-public class  FabricaRepositorio {
+public class FabricaRepositorio
+{
 
-    public static Repositorio Fabrica() {
+    public static Repositorio Fabrica()
+    {
         if (Config.getInstance().getTipoRepositorio() == TipoRepositorio.MYSQL)
+        {
             return new RepositorioMySQL();
+        }
         else
+        {
             return new RepositorioArquivos();
+        }
     }
 }

@@ -10,6 +10,10 @@ import br.com.comuns.crud.ec6.enums.TipoRepositorio;
 import br.com.comuns.crud.ec6.vos.acesso.Usuario;
 import br.com.dao.ec6.crud.acesso.UsuarioMySQLDAO;
 import br.com.dao.ec6.crud.acesso.UsuarioTextoDAO;
+import br.com.dao.ec6.crud.pedido.PedidoMySQLDAO;
+import br.com.dao.ec6.crud.pedido.PedidoTextoDAO;
+import br.com.dao.ec6.crud.produto.ProdutoMySQLDAO;
+import br.com.dao.ec6.crud.produto.ProdutoTextoDAO;
 
 /**
  *
@@ -32,29 +36,51 @@ public class FabricaDAOs {
 
     private static DAO montaDAOTexto(EntidadesDisponiveis enumEntidade) {
         DAO retorno;
+        
         switch (enumEntidade)
         {
             case USUARIO:
                 retorno = new UsuarioTextoDAO();
-                break;            
+                break;
+                
+            case PEDIDO:
+                retorno = new PedidoTextoDAO();
+                break;
+                
+            case PRODUTO:
+                retorno = new ProdutoTextoDAO();
+                break;
+                
             default:
                 retorno = null;
                 break;
         }
+        
         return retorno;    
     }
     
     private static DAO montaDAOMySQL(EntidadesDisponiveis enumEntidade) {
         DAO retorno;
+        
         switch (enumEntidade)
         {
             case USUARIO:
                 retorno = new UsuarioMySQLDAO();
-                break;            
+                break;
+                
+            case PEDIDO:
+                retorno = new PedidoMySQLDAO();
+                break;
+                
+            case PRODUTO:
+                retorno = new ProdutoMySQLDAO();
+                break;
+                
             default:
                 retorno = null;
                 break;
         }
+        
         return retorno;    
     }
     

@@ -12,33 +12,73 @@ import br.com.dao.ec6.crud.basis.DAO;
 import br.com.dao.ec6.crud.basis.FabricaDAOs;
 import br.com.dao.ec6.crud.repositorio.basis.Repositorio;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 /**
  *
  * @author gabriell
  */
-public class RepositorioArquivos extends Repositorio{
+public class RepositorioArquivos extends Repositorio
+{
 
     @Override
-    public Entidade seleciona(int id, EntidadesDisponiveis tipoEntidade) {
+    public Entidade seleciona(int id, EntidadesDisponiveis tipoEntidade)
+    {
         DAO dao = FabricaDAOs.Fabrica(tipoEntidade, TipoRepositorio.TEXTO);
         Entidade entidade = dao.seleciona(id);
+
         return entidade;
     }
 
     @Override
-    public Entidade localiza(String codigo, EntidadesDisponiveis tipoEntidade) {
+    public Entidade localiza(String codigo, EntidadesDisponiveis tipoEntidade)
+    {
         DAO dao = FabricaDAOs.Fabrica(tipoEntidade, TipoRepositorio.TEXTO);
+
         Entidade entidade = null;
-        try {
+
+        try
+        {
             entidade = dao.localiza(codigo);
-        } catch (SQLException ex) {
+        }
+        catch (SQLException ex)
+        {
             Logger.getLogger(RepositorioArquivos.class.getName()).log(Level.SEVERE, null, ex);
         }
         return entidade;
     }
 
-  
-    
+    @Override
+    public void Incluir(Entidade entidade, EntidadesDisponiveis tipoEntidade)
+    {
+        DAO dao = FabricaDAOs.Fabrica(tipoEntidade, TipoRepositorio.TEXTO);
+        
+    }
+
+    @Override
+    public void Atualizar(Entidade entidade, EntidadesDisponiveis tipoEntidade)
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void Deletar(int id, EntidadesDisponiveis tipoEntidade)
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Entidade> ObterTodos(EntidadesDisponiveis tipoEntidade)
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Entidade ObterEntidadePorId(int id, EntidadesDisponiveis tipoEntidade)
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

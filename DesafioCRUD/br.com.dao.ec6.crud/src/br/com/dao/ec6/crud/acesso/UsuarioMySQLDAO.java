@@ -18,27 +18,34 @@ import java.util.logging.Logger;
  * @author gabriell
  * @param <E>
  */
-public class UsuarioMySQLDAO <E extends Entidade> extends MySQLDAO {
-    public UsuarioMySQLDAO() {
+public class UsuarioMySQLDAO<E extends Entidade> extends MySQLDAO
+{
+
+    public UsuarioMySQLDAO()
+    {
         super(Usuario.class);
         setTabela("tbUsuario");
     }
 
     @Override
-    protected E preencheEntidade(ResultSet rs) {
+    protected E preencheEntidade(ResultSet rs)
+    {
         Usuario entidade = new Usuario();
-        try {
+        try
+        {
             entidade.setLogin(rs.getString("Login"));
             entidade.setSenha(rs.getString("Senha"));
-        } catch (SQLException ex) {
+        }
+        catch (SQLException ex)
+        {
             Logger.getLogger(UsuarioMySQLDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return (E)entidade;
+        return (E) entidade;
     }
-    
-    
+
     @Override
-    public Entidade seleciona(int id) {
+    public Entidade seleciona(int id)
+    {
         // Não há retorno por id
         return null;
     }
