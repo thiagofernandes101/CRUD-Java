@@ -27,7 +27,7 @@ public class Acesso
         boolean retorno = false;
 
         Repositorio repositorio = FabricaRepositorio.Fabrica();
-        Usuario usuario = (Usuario) repositorio.localiza(user.getLogin(), EntidadesDisponiveis.USUARIO);
+        Usuario usuario = (Usuario)repositorio.localiza(user.getLogin(), EntidadesDisponiveis.USUARIO);
 
         if (usuario != null)
         {

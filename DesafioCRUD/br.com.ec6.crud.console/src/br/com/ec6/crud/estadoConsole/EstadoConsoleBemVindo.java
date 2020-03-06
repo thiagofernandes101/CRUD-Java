@@ -12,10 +12,12 @@ import java.util.Scanner;
  *
  * @author gabriell
  */
-public class EstadoConsoleBemVindo extends MaquinaEstadoConsole{
+public class EstadoConsoleBemVindo extends MaquinaEstadoConsole
+{
 
     @Override
-    public boolean Executa() {
+    public boolean Executa()
+    {
         boolean sair = false;
         System.out.println("Bem-vindo!");
         System.out.println("Indique a opção desejada!");

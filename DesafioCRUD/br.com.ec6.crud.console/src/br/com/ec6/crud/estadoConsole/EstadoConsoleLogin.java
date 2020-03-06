@@ -6,6 +6,7 @@
 package br.com.ec6.crud.estadoConsole;
 
 import br.com.business.ec6.crud.acesso.Acesso;
+import br.com.comuns.crud.ec6.vos.acesso.Funcionario;
 import br.com.comuns.crud.ec6.vos.acesso.Usuario;
 import br.com.dao.ec6.crud.acesso.UsuarioTextoDAO;
 import br.com.ec6.crud.CRUD;
@@ -19,27 +20,26 @@ import java.util.logging.Logger;
  */
 public class EstadoConsoleLogin extends MaquinaEstadoConsole
 {
-
     @Override
     public boolean Executa()
     {
         boolean sair = false;
-        
+
         Usuario user = new Usuario();
         Scanner scan = new Scanner(System.in);
-        
+
         System.out.println("**** LOGIN ****");
-        
+
         System.out.println("Digite seu usuário");
         user.setLogin(scan.nextLine());
-        
+
         System.out.println("Digite sua senha");
         user.setSenha(scan.nextLine());
-        
+
         Acesso acesso = new Acesso();
-        
+
         boolean senhaValida = acesso.validaUsuario(user);
-        
+
         if (senhaValida)
         {
             CRUD.estadoConsole = EnumEstadoConsole.MENU_PRINCIPAL.getEstadoMaquina();
@@ -48,7 +48,7 @@ public class EstadoConsoleLogin extends MaquinaEstadoConsole
         {
             System.out.println("Dados inválidos!");
         }
-        
+
         return sair;
     }
 }

@@ -11,6 +11,7 @@ import br.com.comuns.ec6.crud.basis.Entidade;
  *
  * @author gabriell
  */
-public class Pedido extends Entidade  {
-    
+public class Pedido extends Entidade
+{
+
 }

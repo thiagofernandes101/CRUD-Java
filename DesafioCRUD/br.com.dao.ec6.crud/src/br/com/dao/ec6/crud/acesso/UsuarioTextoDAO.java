@@ -5,6 +5,7 @@
  */
 package br.com.dao.ec6.crud.acesso;
 
+import br.com.comuns.crud.ec6.vos.acesso.Funcionario;
 import br.com.comuns.crud.ec6.vos.acesso.Usuario;
 import br.com.comuns.ec6.crud.basis.Entidade;
 import br.com.dao.ec6.crud.basis.DAO;
@@ -30,7 +31,7 @@ public class UsuarioTextoDAO extends DAO
 
     public UsuarioTextoDAO()
     {
-        super(Usuario.class);
+        super(Funcionario.class);
 //        Usuario masterUser = new Usuario();
 //        masterUser.setLogin("master");
 //        masterUser.setSenha("master");
@@ -47,7 +48,7 @@ public class UsuarioTextoDAO extends DAO
     @Override
     public Entidade localiza(String codigo) throws SQLException
     {
-        Entidade entidade = usuarios.getOrDefault(codigo, null);
+        //Entidade entidade = usuarios.getOrDefault(codigo, null);
         Usuario usuario = new Usuario();
         try
         {
@@ -78,7 +79,7 @@ public class UsuarioTextoDAO extends DAO
             Logger.getLogger(UsuarioTextoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        return entidade;
+        return null;
     }
 
     /* Opção 1 
@@ -92,7 +93,7 @@ public class UsuarioTextoDAO extends DAO
 
         for (Usuario usuario : usuarios.values())
         {
-            entidades.add(usuario);
+            //entidades.add(usuario);
         }
 
         return entidades;
@@ -128,10 +129,8 @@ public class UsuarioTextoDAO extends DAO
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public Usuario ObterUsuarioParaAcesso() throws FileNotFoundException, IOException
-    {
-        Usuario usuario = new Usuario();
-        
+    public Entidade ObterUsuarioParaAcesso() throws FileNotFoundException, IOException
+    {        
         try ( BufferedReader arquivoAcessoUsuario = new BufferedReader(new FileReader("C:\\Users\\thiag\\Documents\\Termomecanica\\EC6\\ProfessorGabrielLaraBatista\\CRUD-Java\\DesafioCRUD\\br.com.dao.ec6.crud\\Repositorio\\Login\\AcessoUsuario.txt")))
         {
             String linhaArquivo;
@@ -143,6 +142,6 @@ public class UsuarioTextoDAO extends DAO
             }
         }
         
-        return usuario;
+        return null;
     }
 }

@@ -9,6 +9,7 @@ package br.com.comuns.crud.ec6.vos.acesso;
  *
  * @author gabriell
  */
-public class Gerente extends Vendedor {
-    
+public class Gerente extends Funcionario
+{
+
 }

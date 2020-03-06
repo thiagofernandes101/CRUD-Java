@@ -6,13 +6,12 @@
 package br.com.comuns.crud.ec6.vos.acesso;
 
 import br.com.comuns.ec6.annotations.CampoNoBanco;
-import br.com.comuns.ec6.crud.basis.Entidade;
 
 /**
  *
  * @author gabriell
  */
-public class Usuario extends Entidade {
+public class Usuario {
     
     
     @CampoNoBanco(nome = "senha", chave = false)
