@@ -40,7 +40,8 @@ public class UsuarioMySQLDAO<E extends Entidade> extends MySQLDAO
         {
             Logger.getLogger(UsuarioMySQLDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return (E) entidade;
+        //return (E) entidade;
+        return null;
     }
 
     @Override
