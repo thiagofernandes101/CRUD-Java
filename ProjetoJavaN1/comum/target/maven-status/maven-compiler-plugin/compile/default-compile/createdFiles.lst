@@ -1,0 +1,9 @@
+Enums\EntidadesDisponiveis.class
+VO\Conteudo\Pedido.class
+VO\Acesso\Funcionario.class
+VO\Acesso\Vendedor.class
+Enums\TipoRepositorio.class
+VO\Padrao\PadraoVO.class
+VO\Acesso\Usuario.class
+VO\Conteudo\Produto.class
+VO\Acesso\Gerente.class
