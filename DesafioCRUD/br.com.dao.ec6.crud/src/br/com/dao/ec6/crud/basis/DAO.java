@@ -24,10 +24,6 @@ public abstract class DAO<E extends Entidade>
     {
         this.entityClass = entityClass;
     }
-
-    public abstract E seleciona(int id);
-
-    public abstract E localiza(String codigo) throws SQLException;
     
     public abstract void Incluir(Entidade entidade);
     

@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.dao.ec6.crud.produto;
+package br.com.dao.ec6.crud.repositorio.arquivo;
 
-import br.com.comuns.crud.ec6.vos.conteudo.Produto;
 import br.com.comuns.ec6.crud.basis.Entidade;
 import br.com.dao.ec6.crud.basis.DAO;
 import java.sql.SQLException;
@@ -15,14 +14,10 @@ import java.util.List;
 /**
  *
  * @author thiag
+ * @param <E>
  */
-public class ProdutoTextoDAO extends DAO
+public class RepositorioTeste<E> extends DAO
 {
-
-    public ProdutoTextoDAO()
-    {
-        super(Produto.class);
-    }
 
 //    @Override
 //    public Entidade seleciona(int id)
@@ -35,12 +30,6 @@ public class ProdutoTextoDAO extends DAO
 //    {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 //    }
-
-    @Override
-    public ArrayList lista() throws SQLException
-    {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     @Override
     public void Incluir(Entidade entidade)
@@ -72,4 +61,10 @@ public class ProdutoTextoDAO extends DAO
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Override
+    public ArrayList lista() throws SQLException
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
 }

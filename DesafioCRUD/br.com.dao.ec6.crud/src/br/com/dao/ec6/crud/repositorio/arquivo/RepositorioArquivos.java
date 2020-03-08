@@ -26,28 +26,31 @@ public class RepositorioArquivos extends Repositorio
     @Override
     public Entidade seleciona(int id, EntidadesDisponiveis tipoEntidade)
     {
-        DAO dao = FabricaDAOs.Fabrica(tipoEntidade, TipoRepositorio.TEXTO);
-        Entidade entidade = dao.seleciona(id);
-
-        return entidade;
+//        DAO dao = FabricaDAOs.Fabrica(tipoEntidade, TipoRepositorio.TEXTO);
+//        Entidade entidade = dao.seleciona(id);
+//
+//        return entidade;
+        
+        return null;
     }
 
     @Override
     public Entidade localiza(String codigo, EntidadesDisponiveis tipoEntidade)
     {
-        DAO dao = FabricaDAOs.Fabrica(tipoEntidade, TipoRepositorio.TEXTO);
-
-        Entidade entidade = null;
-
-        try
-        {
-            entidade = dao.localiza(codigo);
-        }
-        catch (SQLException ex)
-        {
-            Logger.getLogger(RepositorioArquivos.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return entidade;
+//        DAO dao = FabricaDAOs.Fabrica(tipoEntidade, TipoRepositorio.TEXTO);
+//
+//        Entidade entidade = null;
+//
+//        try
+//        {
+//            entidade = dao.localiza(codigo);
+//        }
+//        catch (SQLException ex)
+//        {
+//            Logger.getLogger(RepositorioArquivos.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        return entidade;
+        return null;
     }
 
     @Override

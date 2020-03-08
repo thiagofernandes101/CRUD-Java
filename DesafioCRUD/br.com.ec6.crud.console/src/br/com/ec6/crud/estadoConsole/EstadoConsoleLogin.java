@@ -38,9 +38,10 @@ public class EstadoConsoleLogin extends MaquinaEstadoConsole
 
         Acesso acesso = new Acesso();
 
-        boolean senhaValida = acesso.validaUsuario(user);
+        //boolean senhaValida = acesso.validaUsuario(user);
+        String cargoFuncionario = acesso.ValidarUsuario(user);
 
-        if (senhaValida)
+        if (!cargoFuncionario.isBlank())
         {
             CRUD.estadoConsole = EnumEstadoConsole.MENU_PRINCIPAL.getEstadoMaquina();
         }

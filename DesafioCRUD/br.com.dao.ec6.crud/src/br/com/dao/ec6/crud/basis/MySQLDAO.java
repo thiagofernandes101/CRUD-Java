@@ -37,11 +37,11 @@ public class MySQLDAO <E extends Entidade> extends DAO {
         tabela = value;
     }
     
-    @Override
-    public E seleciona(int id) {
-        // Não há retorno por id
-        return null;
-    }
+//    @Override
+//    public E seleciona(int id) {
+//        // Não há retorno por id
+//        return null;
+//    }
 
     /**
      *
@@ -49,22 +49,22 @@ public class MySQLDAO <E extends Entidade> extends DAO {
      * @return
      * @throws SQLException
      */
-    @Override
-    public E localiza (String codigo) throws SQLException {
-        E entidade = null;
-        try (Connection conexao = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA )) {
-            String SQL = getLocalizaCommand();
-            try (PreparedStatement stmt = conexao.prepareStatement(SQL)) {
-                stmt.setString(1, codigo);
-                try (ResultSet rs = stmt.executeQuery()) {
-                    if (rs.first()){
-                        entidade = preencheEntidade(rs);
-                    }
-                }
-            }
-        }        
-        return entidade;
-    }
+//    @Override
+//    public E localiza (String codigo) throws SQLException {
+//        E entidade = null;
+//        try (Connection conexao = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA )) {
+//            String SQL = getLocalizaCommand();
+//            try (PreparedStatement stmt = conexao.prepareStatement(SQL)) {
+//                stmt.setString(1, codigo);
+//                try (ResultSet rs = stmt.executeQuery()) {
+//                    if (rs.first()){
+//                        entidade = preencheEntidade(rs);
+//                    }
+//                }
+//            }
+//        }        
+//        return entidade;
+//    }
 
     protected String getLocalizaCommand() {
         String campos = "";

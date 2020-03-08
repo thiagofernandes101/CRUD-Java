@@ -24,10 +24,10 @@ public class ProdutoMySQLDAO <E extends Entidade> extends MySQLDAO {
         super(Produto.class);
     }
     
-    @Override
-    public E localiza(String codigo) throws SQLException {
-        return (E)super.localiza(codigo);
-    }
+//    @Override
+//    public E localiza(String codigo) throws SQLException {
+//        return (E)super.localiza(codigo);
+//    }
     
     @Override
     protected String getLocalizaCommand() {

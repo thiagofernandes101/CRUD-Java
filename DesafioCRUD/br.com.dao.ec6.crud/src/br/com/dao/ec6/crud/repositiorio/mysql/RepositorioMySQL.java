@@ -26,25 +26,28 @@ public class RepositorioMySQL extends Repositorio
     @Override
     public Entidade seleciona(int id, EntidadesDisponiveis tipoEntidade)
     {
-        DAO dao = FabricaDAOs.Fabrica(tipoEntidade, TipoRepositorio.MYSQL);
-        Entidade entidade = dao.seleciona(id);
-        return entidade;
+//        DAO dao = FabricaDAOs.Fabrica(tipoEntidade, TipoRepositorio.MYSQL);
+//        Entidade entidade = dao.seleciona(id);
+//        return entidade;
+        return null;
     }
 
     @Override
     public Entidade localiza(String codigo, EntidadesDisponiveis tipoEntidade)
     {
-        DAO dao = FabricaDAOs.Fabrica(tipoEntidade, TipoRepositorio.MYSQL);
-        Entidade entidade = null;
-        try
-        {
-            entidade = dao.localiza(codigo);
-        }
-        catch (SQLException ex)
-        {
-            Logger.getLogger(RepositorioMySQL.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return entidade;
+//        DAO dao = FabricaDAOs.Fabrica(tipoEntidade, TipoRepositorio.MYSQL);
+//        Entidade entidade = null;
+//        try
+//        {
+//            entidade = dao.localiza(codigo);
+//        }
+//        catch (SQLException ex)
+//        {
+//            Logger.getLogger(RepositorioMySQL.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        return entidade;
+        
+        return null;
     }
 
     @Override
