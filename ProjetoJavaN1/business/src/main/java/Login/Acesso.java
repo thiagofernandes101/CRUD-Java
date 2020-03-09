@@ -6,6 +6,8 @@
 package Login;
 
 import VO.Acesso.Usuario;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 /**
  *
@@ -16,20 +18,20 @@ public class Acesso
 
     public boolean ValidarLoginESenha(Usuario usuario)
     {
-        boolean loginESenhaValido = true;
+        boolean loginESenhaValido = false;
 
         if (usuario != null)
         {
             if (!usuario.getLogin().isBlank() && !usuario.getSenha().isBlank())
             {
-                loginESenhaValido = false;
+                loginESenhaValido = true;
             }
         }
 
         return loginESenhaValido;
     }
 
-    public String ValidarUsuario(Usuario usuario)
+    public String ValidarUsuario(Usuario usuario) throws FileNotFoundException, IOException
     {
         String retornoCargoUsuario = "";
         
