@@ -7,6 +7,9 @@ package EnumEstadoConsole;
 
 import EstadoConsole.EstadoConsoleBemVindo;
 import EstadoConsole.MaquinaEstadoConsole;
+import EstadoConsole.EstadoConsoleLogin;
+import EstadoConsole.EstadoConsoleVendedor;
+import EstadoConsole.EstadoConsoleGerente;
 
 /**
  *
