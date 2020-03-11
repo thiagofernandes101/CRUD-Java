@@ -1,8 +1,0 @@
-Login\AcessoDAO.class
-Repositorios\RepositorioMySql.class
-Repositorios\GerenteRepositorioMySql.class
-Repositorios\VendedorRepositorioMySql.class
-Interfaces\IRepositorio.class
-Repositorios\VendedorRepositorioArquivo.class
-Repositorios\GerenteRepositorioArquivo.class
-Repositorios\RepositorioArquivo.class

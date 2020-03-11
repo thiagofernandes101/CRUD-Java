@@ -14,7 +14,8 @@ public enum EntidadesDisponiveis
     Gerente("gerente"),
     Vendedor("vendedor"),
     Pedido("pedido"),
-    Produto("produto");
+    Produto("produto"),
+    Cliente("cliente");
     
     private String _descricao;
     
@@ -27,4 +28,5 @@ public enum EntidadesDisponiveis
     {
         return _descricao;
     }
+    
 }

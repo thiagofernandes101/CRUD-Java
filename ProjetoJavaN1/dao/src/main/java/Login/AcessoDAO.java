@@ -31,10 +31,10 @@ public class AcessoDAO
             String linha;
             while ((linha = arquivo.readLine()) != null)
             {
-                String login = linha.split(";")[3].toLowerCase().trim().toString();
-                String senha = linha.split(";")[4].toLowerCase().trim().toString();
+                String login = linha.split(";")[3];
+                String senha = linha.split(";")[4];
                 
-                if (login == usuario.getLogin().toLowerCase().trim().toString() && senha == usuario.getSenha().toLowerCase().trim().toString())
+                if (login.equals(usuario.getLogin()) && senha.equals(usuario.getSenha()))
                 {
                     return linha.split(";")[2];
                 }

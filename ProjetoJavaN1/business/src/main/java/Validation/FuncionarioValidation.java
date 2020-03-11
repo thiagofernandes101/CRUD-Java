@@ -3,15 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Repositorios;
-
-import VO.Acesso.Vendedor;
+package Validation;
 
 /**
  *
  * @author thiag
  */
-public class VendedorRepositorioMySql extends RepositorioMySql<Vendedor>
+public class FuncionarioValidation
 {
     
 }

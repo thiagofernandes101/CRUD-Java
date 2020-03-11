@@ -14,13 +14,13 @@ import java.util.List;
  */
 public interface IRepositorio<TEntity> 
 {
-    void Incluir(TEntity entidade, EntidadesDisponiveis tipoEntidade);
+    void Incluir(String atributosInserir, String caminhoArquivo);
     
-    TEntity ObterPorId(int id, EntidadesDisponiveis tipoEntidade);
+    TEntity ObterPorId(int id, String caminhoArquivo);
     
-    List<TEntity> ObterTodos(EntidadesDisponiveis tipoEntidade);
+    List<TEntity> ObterTodos(String caminhoArquivo);
     
-    void Atualizar(TEntity entidade, EntidadesDisponiveis tipoEntidade);
+    void Atualizar(String atributosAtualizar, String caminhoArquivo);
     
-    void Remover(int id, EntidadesDisponiveis tipoEntidade);
+    void Remover(int id, String caminhoArquivo);
 }
