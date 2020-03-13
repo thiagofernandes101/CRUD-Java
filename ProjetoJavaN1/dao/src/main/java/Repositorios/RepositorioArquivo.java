@@ -7,11 +7,15 @@ package Repositorios;
 
 import Interfaces.IRepositorio;
 import Enums.EntidadesDisponiveis;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -46,9 +50,36 @@ public abstract class RepositorioArquivo<TEntity> implements IRepositorio<TEntit
     }
 
     @Override
-    public List<TEntity> ObterTodos(String caminhoArquivo)
+    public List<String> ObterTodos(String caminhoArquivo)
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        BufferedReader arquivo;
+        List<String> listaArquivo = new ArrayList<>();
+        try
+        {
+            arquivo = new BufferedReader(new FileReader(caminhoArquivo));
+            
+            if (arquivo != null)
+            {
+                //Scanner scanner = new Scanner(arquivo);
+                String linha;
+                while ((linha = arquivo.readLine()) != null)
+                {
+                    listaArquivo.add(linha);
+                }
+                
+                return listaArquivo;
+            }            
+        }
+        catch (FileNotFoundException ex)
+        {
+            Logger.getLogger(RepositorioArquivo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        catch (IOException ex)
+        {
+            Logger.getLogger(RepositorioArquivo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return null;
     }
 
     @Override

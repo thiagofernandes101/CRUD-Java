@@ -30,16 +30,16 @@ public class GerarId
                 {
                     ultima = linha;
                 }
+                if (ultima != null)
+                {
 
-                int id = Integer.parseInt(ultima.split(";")[0]);
+                    int id = Integer.parseInt(ultima.split(";")[0]);
 
-                return id + 1;
+                    return id + 1;
+                }
             }
-            else
-            {
-                return 0;
-            }
+            
+            return 0;
         }
     }
-
 }

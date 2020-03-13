@@ -18,7 +18,7 @@ public interface IRepositorio<TEntity>
     
     TEntity ObterPorId(int id, String caminhoArquivo);
     
-    List<TEntity> ObterTodos(String caminhoArquivo);
+    List<String> ObterTodos(String caminhoArquivo);
     
     void Atualizar(String atributosAtualizar, String caminhoArquivo);
     

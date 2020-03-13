@@ -28,7 +28,7 @@ public class FuncionarioValidation
             FuncionarioRepositorioArquivo funcionarioRepositorio = new FuncionarioRepositorioArquivo();
             
             int id = GerarIdArquivo("C:\\Users\\thiag\\Documents\\Termomecanica\\EC6\\ProfessorGabrielLaraBatista\\CRUD-Java\\ProjetoJavaN1\\dao\\src\\main\\java\\ArquivoBancoDados\\Funcionario.txt");
-            BufferedReader arquivo = new BufferedReader(new FileReader("C:\\Users\\thiag\\Documents\\Termomecanica\\EC6\\ProfessorGabrielLaraBatista\\CRUD-Java\\ProjetoJavaN1\\dao\\src\\main\\java\\ArquivoBancoDados\\Cliente.txt"));
+            BufferedReader arquivo = new BufferedReader(new FileReader("C:\\Users\\thiag\\Documents\\Termomecanica\\EC6\\ProfessorGabrielLaraBatista\\CRUD-Java\\ProjetoJavaN1\\dao\\src\\main\\java\\ArquivoBancoDados\\Funcionario.txt"));
 
             if (id == 1)
             {
@@ -49,6 +49,6 @@ public class FuncionarioValidation
 
         }
 
-        return "Nao foi possivel cadastrar o cliente especificado";
+        return "Nao foi possivel cadastrar o funcionario especificado";
     }
 }

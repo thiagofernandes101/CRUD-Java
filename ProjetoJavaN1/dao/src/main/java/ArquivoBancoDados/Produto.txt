@@ -1,0 +1,2 @@
+0;papel;higiene;2.0
+1;bala;comida;20000.0
