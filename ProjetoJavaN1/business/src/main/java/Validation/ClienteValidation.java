@@ -8,6 +8,8 @@ package Validation;
 import Enums.EntidadesDisponiveis;
 import Repositorios.ClienteRepositorioArquivo;
 import VO.Cliente.Cliente;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 
 /**
@@ -19,14 +21,29 @@ public class ClienteValidation
 
     public static String IncluirValidation(Cliente cliente) throws IOException
     {
+        String atributosInserir = "";
         if (!cliente.getNome().trim().isEmpty() && !cliente.getCpf().trim().isEmpty())
         {
             ClienteRepositorioArquivo clienteRepositorio = new ClienteRepositorioArquivo();
             Cliente retornoClienteValidacao = clienteRepositorio.ObterPorCPF(cliente.getCpf());
 
-            if (retornoClienteValidacao != null)
+            if (retornoClienteValidacao == null)
             {
-                clienteRepositorio.Incluir(cliente, EntidadesDisponiveis.Cliente);
+                BufferedReader arquivo = new BufferedReader(new FileReader("C:\\Users\\thiag\\Documents\\Termomecanica\\EC6\\ProfessorGabrielLaraBatista\\CRUD-Java\\ProjetoJavaN1\\dao\\src\\main\\java\\ArquivoBancoDados\\Cliente.txt"));
+                
+                if (arquivo != null)
+                {
+                    atributosInserir =  cliente.getCpf() + ";" + cliente.getNome();
+                }
+                else
+                {
+                    atributosInserir = cliente.getCpf() + ";" + cliente.getNome();
+                }
+                
+                clienteRepositorio.Incluir(atributosInserir, "C:\\Users\\thiag\\Documents\\Termomecanica\\EC6\\ProfessorGabrielLaraBatista\\CRUD-Java\\ProjetoJavaN1\\dao\\src\\main\\java\\ArquivoBancoDados\\Cliente.txt");
+                
+                arquivo.close();
+                
                 return "Cliente cadastrado com sucesso";
             }
         }

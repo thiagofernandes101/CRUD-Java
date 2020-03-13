@@ -5,8 +5,15 @@
  */
 package EstadoConsole;
 
+import VO.Acesso.Funcionario;
+import VO.Acesso.Usuario;
+import VO.Cliente.Cliente;
+import Validation.ClienteValidation;
 import Validation.FuncionarioValidation;
+import java.io.IOException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -18,10 +25,21 @@ public class EstadoConsoleGerente extends MaquinaEstadoConsole
     @Override
     public boolean ExecutarMaquinaEstado()
     {
-        return ApresentacaoGerente();
+        boolean retorno = false;
+        
+        try
+        {
+            retorno = ApresentacaoGerente();
+        }
+        catch (IOException ex)
+        {
+            Logger.getLogger(EstadoConsoleGerente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return retorno;
     }
     
-    private static boolean ApresentacaoGerente()
+    private static boolean ApresentacaoGerente() throws IOException
     {
         int opcao;
         boolean sair = false;
@@ -40,12 +58,35 @@ public class EstadoConsoleGerente extends MaquinaEstadoConsole
         switch(opcao)
         {
             case 1:
+                String login;
+                String senha;
+                Funcionario funcionario = new Funcionario();
+                Scanner lerFunc = new Scanner(System.in);
+                System.out.print("Digite o nome do funcionario:");
+                funcionario.setNome(lerFunc.next());
+                System.out.println("Digite o cargo do funcionario:");
+                funcionario.setCargo(lerFunc.next());
+                System.out.println("Digite o login do funcionario:"); 
+                login = lerFunc.next();
+                System.out.println("Digite a senha do funcionario:");
+                senha = lerFunc.next();
+                funcionario.setUsuario(new Usuario(login, senha));
+                
+              FuncionarioValidation.IncluirValidation(funcionario);
                 break;
             case 2:
                 break;
             case 3:
                 break;
             case 4:
+                Cliente cliente = new Cliente();
+                Scanner ler = new Scanner(System.in);
+                System.out.print("Digite o nome do cliente:");
+                cliente.setNome(ler.next());
+                System.out.println("Digite o cpf do cliente:");
+                cliente.setCpf(ler.next());
+                
+                ClienteValidation.IncluirValidation(cliente);
                 break;
             case 5:
                 sair = true;

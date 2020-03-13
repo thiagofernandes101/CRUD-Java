@@ -13,6 +13,15 @@ public class Usuario
 {
     private String _login;
     private String _senha;
+    
+    public Usuario(){
+    
+    }
+    public Usuario(String login,String senha){
+        setLogin(login);
+        setSenha(senha);
+    }
+        
 
     public String getLogin()
     {

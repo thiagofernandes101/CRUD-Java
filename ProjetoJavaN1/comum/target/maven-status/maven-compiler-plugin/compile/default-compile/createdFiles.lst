@@ -1,6 +1,7 @@
 Enums\EntidadesDisponiveis.class
 VO\Conteudo\Pedido.class
 VO\Acesso\Funcionario.class
+VO\Cliente\Cliente.class
 VO\Acesso\Vendedor.class
 Enums\TipoRepositorio.class
 VO\Padrao\PadraoVO.class

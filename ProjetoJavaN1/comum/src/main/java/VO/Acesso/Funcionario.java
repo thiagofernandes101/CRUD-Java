@@ -11,7 +11,7 @@ import VO.Padrao.PadraoVO;
  *
  * @author thiag
  */
-public abstract class Funcionario extends PadraoVO
+public class Funcionario extends PadraoVO
 {
     private String _nome;
     private String _cargo;

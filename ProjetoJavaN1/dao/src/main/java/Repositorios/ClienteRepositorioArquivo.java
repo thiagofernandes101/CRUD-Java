@@ -37,6 +37,7 @@ public class ClienteRepositorioArquivo extends RepositorioArquivo<Cliente>
                 
             }
         }
+        arquivo.close();
         return null;
     }
 }
