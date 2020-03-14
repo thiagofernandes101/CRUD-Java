@@ -1,5 +1,0 @@
-1;admin;gerente;admin;123
-2;gerente;gerente;teste;123
-3;thi;ge;thi;123
-4;pat;ge;pat;123
-5;nathan;gerente;nathan;123

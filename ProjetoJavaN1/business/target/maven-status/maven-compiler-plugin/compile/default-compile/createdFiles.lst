@@ -1,7 +1,0 @@
-Global\GerarId.class
-Validation\FuncionarioValidation.class
-Login\Acesso.class
-Validation\PedidoValidation.class
-Validation\ProdutoValidation.class
-ConfiguracaoCrud\Configuracao.class
-Validation\ClienteValidation.class
