@@ -6,11 +6,14 @@
 package Validation;
 
 import static Global.GerarId.GerarIdArquivo;
+import Repositorios.FuncionarioRepositorioArquivo;
 import Repositorios.ProdutoRepositorioArquivo;
 import VO.Conteudo.Produto;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.List;
 
 /**
  *
@@ -20,15 +23,17 @@ public class ProdutoValidation {
 
     public static String IncluirValidation(Produto produto) throws IOException {
         String atributosInserir = "";
+          File f = new File("Produto.txt");
+        String absoluta = f.getAbsolutePath().replace("Console", "DAO\\src\\ArquivoBancoDados");
         if (!produto.getNome().trim().isEmpty() && !produto.getDesricao().trim().isEmpty() && produto.getPreco() > 0) {
             ProdutoRepositorioArquivo produtoRepositorio = new ProdutoRepositorioArquivo();
 
-            int id = GerarIdArquivo("C:\\Users\\thiag\\Documents\\Termomecanica\\EC6\\ProfessorGabrielLaraBatista\\CRUD-Java\\ProjetoJavaN1\\dao\\src\\main\\java\\ArquivoBancoDados\\Produto.txt");
-            BufferedReader arquivo = new BufferedReader(new FileReader("C:\\Users\\thiag\\Documents\\Termomecanica\\EC6\\ProfessorGabrielLaraBatista\\CRUD-Java\\ProjetoJavaN1\\dao\\src\\main\\java\\ArquivoBancoDados\\Produto.txt"));
+            int id = GerarIdArquivo(absoluta);
+            BufferedReader arquivo = new BufferedReader(new FileReader(absoluta));
 
             atributosInserir = id + ";" + produto.getNome() + ";" + produto.getDesricao() + ";" + produto.getPreco();
 
-            produtoRepositorio.Incluir(atributosInserir, "C:\\Users\\thiag\\Documents\\Termomecanica\\EC6\\ProfessorGabrielLaraBatista\\CRUD-Java\\ProjetoJavaN1\\dao\\src\\main\\java\\ArquivoBancoDados\\Produto.txt");
+            produtoRepositorio.Incluir(atributosInserir, absoluta);
 
             arquivo.close();
 
@@ -37,5 +42,20 @@ public class ProdutoValidation {
         }
 
         return "Nao foi possivel cadastrar o produto especificado";
+    }
+    public static List<String> Visualizar(){
+        String atributosInserir = "";
+        File f = new File("Produto.txt");
+        String absoluta = f.getAbsolutePath().replace("Console", "DAO\\src\\ArquivoBancoDados");
+        ProdutoRepositorioArquivo produtoRepositorio  = new ProdutoRepositorioArquivo();
+        return produtoRepositorio.ObterTodos(absoluta);
+    }
+    public static void Excluir(int id){
+        File f = new File("Produto.txt");
+        String absoluta = f.getAbsolutePath().replace("Console", "DAO\\src\\ArquivoBancoDados");
+        ProdutoRepositorioArquivo produtoRepositorio  = new ProdutoRepositorioArquivo();
+        produtoRepositorio.Remover(id, absoluta);
+
+        
     }
 }

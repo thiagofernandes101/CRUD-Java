@@ -65,9 +65,9 @@ public class EstadoConsoleLogin extends MaquinaEstadoConsole {
 
             retornoCargoFuncionario = acessoCadastro.ValidarUsuario(usuario);
         }
-        while (retornoCargoFuncionario.isEmpty() || retornoCargoFuncionario == "Usuario nao encontrado");
+        while (retornoCargoFuncionario.isEmpty() || "Usuario nao encontrado".equals(retornoCargoFuncionario));
 
-        if (retornoCargoFuncionario.isEmpty() || retornoCargoFuncionario == "Usuario nao encontrado")
+        if (retornoCargoFuncionario.isEmpty() || "Usuario nao encontrado".equals(retornoCargoFuncionario))
         {
 
             System.out.flush();

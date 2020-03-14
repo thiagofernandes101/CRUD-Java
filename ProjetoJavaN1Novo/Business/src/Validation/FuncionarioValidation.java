@@ -6,11 +6,14 @@
 package Validation;
 
 import static Global.GerarId.GerarIdArquivo;
+import Repositorios.ClienteRepositorioArquivo;
 import Repositorios.FuncionarioRepositorioArquivo;
 import VO.Acesso.Funcionario;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.List;
 
 /**
  *
@@ -20,21 +23,23 @@ public class FuncionarioValidation {
 
     public static String IncluirValidation(Funcionario funcionario) throws IOException {
         String atributosInserir = "";
+        File f = new File("Funcionario.txt");
+        String absoluta = f.getAbsolutePath().replace("Console", "DAO\\src\\ArquivoBancoDados");
         if (!funcionario.getNome().trim().isEmpty() && !funcionario.getCargo().trim().isEmpty() && !funcionario.getUsuario().getLogin().trim().isEmpty() && !funcionario.getUsuario().getSenha().trim().isEmpty()) {
             FuncionarioRepositorioArquivo funcionarioRepositorio = new FuncionarioRepositorioArquivo();
 
-            int id = GerarIdArquivo("C:\\Users\\thiag\\Documents\\Termomecanica\\EC6\\ProfessorGabrielLaraBatista\\CRUD-Java\\ProjetoJavaN1\\dao\\src\\main\\java\\ArquivoBancoDados\\Funcionario.txt");
-            BufferedReader arquivo = new BufferedReader(new FileReader("C:\\Users\\thiag\\Documents\\Termomecanica\\EC6\\ProfessorGabrielLaraBatista\\CRUD-Java\\ProjetoJavaN1\\dao\\src\\main\\java\\ArquivoBancoDados\\Funcionario.txt"));
+            int id = GerarIdArquivo(absoluta);
+            BufferedReader arquivo = new BufferedReader(new FileReader(absoluta));
 
             if (id == 1) {
-                atributosInserir = "\n" + id + ";" + funcionario.getNome() + ";" + funcionario.getCargo() + ";" + funcionario.getUsuario().getLogin() + ";" + funcionario.getUsuario().getSenha();
+                atributosInserir = id + ";" + funcionario.getNome() + ";" + funcionario.getCargo() + ";" + funcionario.getUsuario().getLogin() + ";" + funcionario.getUsuario().getSenha();
 
             } else {
                 atributosInserir = id + ";" + funcionario.getNome() + ";" + funcionario.getCargo() + ";" + funcionario.getUsuario().getLogin() + ";" + funcionario.getUsuario().getSenha();
 
             }
 
-            funcionarioRepositorio.Incluir(atributosInserir, "C:\\Users\\thiag\\Documents\\Termomecanica\\EC6\\ProfessorGabrielLaraBatista\\CRUD-Java\\ProjetoJavaN1\\dao\\src\\main\\java\\ArquivoBancoDados\\Funcionario.txt");
+            funcionarioRepositorio.Incluir(atributosInserir, absoluta);
 
             arquivo.close();
 
@@ -43,5 +48,20 @@ public class FuncionarioValidation {
         }
 
         return "Nao foi possivel cadastrar o funcionario especificado";
+    }
+    public static List<String> Visualizar(){
+        String atributosInserir = "";
+        File f = new File("Funcionario.txt");
+        String absoluta = f.getAbsolutePath().replace("Console", "DAO\\src\\ArquivoBancoDados");
+        FuncionarioRepositorioArquivo funcionarioRepositorio  = new FuncionarioRepositorioArquivo();
+        return funcionarioRepositorio.ObterTodos(absoluta);
+    }
+    public static void Excluir(int id){
+        File f = new File("Funcionario.txt");
+        String absoluta = f.getAbsolutePath().replace("Console", "DAO\\src\\ArquivoBancoDados");
+        FuncionarioRepositorioArquivo funcionarioRepositorio  = new FuncionarioRepositorioArquivo();
+        funcionarioRepositorio.Remover(id, absoluta);
+
+        
     }
 }

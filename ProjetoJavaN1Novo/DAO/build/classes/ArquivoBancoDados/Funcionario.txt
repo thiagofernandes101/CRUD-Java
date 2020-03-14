@@ -1,1 +1,2 @@
-1;admin;gerente;admin;123
+0;admin;gerente;admin;123
+2;thiagi;vendedor;thiago;1234

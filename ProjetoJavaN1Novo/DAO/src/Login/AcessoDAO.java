@@ -7,6 +7,7 @@ package Login;
 
 import VO.Acesso.Usuario;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -18,7 +19,9 @@ import java.io.IOException;
 public class AcessoDAO {
     public String ObterAcessoFuncionario(Usuario usuario) throws FileNotFoundException, IOException
     {
-        BufferedReader arquivo = new BufferedReader(new FileReader("C:\\Users\\thiag\\Documents\\Termomecanica\\EC6\\ProfessorGabrielLaraBatista\\CRUD-Java\\ProjetoJavaN1\\dao\\src\\main\\java\\ArquivoBancoDados\\Funcionario.txt"));
+          File f = new File("Funcionario.txt");
+        String absoluta = f.getAbsolutePath().replace("Console", "DAO\\src\\ArquivoBancoDados");
+        BufferedReader arquivo = new BufferedReader(new FileReader(absoluta));
         if (arquivo != null)
         {
             //Scanner scanner = new Scanner(arquivo);

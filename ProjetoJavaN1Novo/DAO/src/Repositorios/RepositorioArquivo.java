@@ -8,7 +8,9 @@ package Repositorios;
 import Interfaces.IRepositorio;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -73,7 +75,29 @@ public abstract class RepositorioArquivo<TEntity> implements IRepositorio<TEntit
 
     @Override
     public void Remover(int id, String caminhoArquivo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<String> lista = new ArrayList<String>();
+        List<String> listaNova = new ArrayList<String>();
+        lista = ObterTodos(caminhoArquivo);
+        for (int i = 0; i < lista.size(); i++) {
+            if(Integer.parseInt(lista.get(i).split(";")[0]) != id){
+                listaNova.add(lista.get(i));
+            }
+            
+        }
+        File f = new File(caminhoArquivo);
+        f.delete();
+        try {
+            FileOutputStream out = new FileOutputStream(caminhoArquivo);
+            for (int i = 0; i < listaNova.size(); i++) {
+                
+               Incluir(listaNova.get(i), caminhoArquivo);
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(RepositorioArquivo.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(RepositorioArquivo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
     }
 
 }

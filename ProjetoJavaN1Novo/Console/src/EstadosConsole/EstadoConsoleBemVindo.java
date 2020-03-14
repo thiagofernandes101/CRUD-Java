@@ -22,7 +22,7 @@ public class EstadoConsoleBemVindo extends MaquinaEstadoConsole {
     
     private static boolean ApresentacaoBemVindo()
     {
-        int opcaoMenu;
+        String opcaoMenu;
         boolean sair = false;
 
         Scanner scanner = new Scanner(System.in);
@@ -33,22 +33,22 @@ public class EstadoConsoleBemVindo extends MaquinaEstadoConsole {
         do
         {
             MenuBemVindo();
-            opcaoMenu = scanner.nextInt();
+            opcaoMenu = scanner.nextLine();
 
-            if (opcaoMenu != 0 && opcaoMenu != 1)
+            if (!"0".equals(opcaoMenu) && !"1".equals(opcaoMenu))
             {
                 System.out.flush();
                 System.out.println("Por favor, digite uma opção válida\n");
             }
         }
-        while (opcaoMenu != 0 && opcaoMenu != 1);
+        while (!"0".equals(opcaoMenu) && !"1".equals(opcaoMenu));
 
         switch (opcaoMenu)
         {
-            case 0:
+            case "0":
                 sair = true;
                 break;
-            case 1:
+            case "1":
                 ProgramaPrincipal.maquinaEstadoConsole = EnumEstadoConsole.Login.getMaquinaEstadoConsole();
                 break;
         }

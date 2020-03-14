@@ -8,8 +8,10 @@ package Validation;
 import Repositorios.ClienteRepositorioArquivo;
 import VO.Cliente.Cliente;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.List;
 
 /**
  *
@@ -19,12 +21,14 @@ public class ClienteValidation {
 
     public static String IncluirValidation(Cliente cliente) throws IOException {
         String atributosInserir = "";
+        File f = new File("Cliente.txt");
+        String absoluta = f.getAbsolutePath().replace("Console", "DAO\\src\\ArquivoBancoDados");
         if (!cliente.getNome().trim().isEmpty() && !cliente.getCpf().trim().isEmpty()) {
             ClienteRepositorioArquivo clienteRepositorio = new ClienteRepositorioArquivo();
             Cliente retornoClienteValidacao = clienteRepositorio.ObterPorCPF(cliente.getCpf());
 
             if (retornoClienteValidacao == null) {
-                BufferedReader arquivo = new BufferedReader(new FileReader("C:\\Users\\thiag\\Documents\\Termomecanica\\EC6\\ProfessorGabrielLaraBatista\\CRUD-Java\\ProjetoJavaN1\\dao\\src\\main\\java\\ArquivoBancoDados\\Cliente.txt"));
+                BufferedReader arquivo = new BufferedReader(new FileReader(absoluta));
 
                 if (arquivo != null) {
                     atributosInserir = cliente.getCpf() + ";" + cliente.getNome();
@@ -32,7 +36,7 @@ public class ClienteValidation {
                     atributosInserir = cliente.getCpf() + ";" + cliente.getNome();
                 }
 
-                clienteRepositorio.Incluir(atributosInserir, "C:\\Users\\thiag\\Documents\\Termomecanica\\EC6\\ProfessorGabrielLaraBatista\\CRUD-Java\\ProjetoJavaN1\\dao\\src\\main\\java\\ArquivoBancoDados\\Cliente.txt");
+                clienteRepositorio.Incluir(atributosInserir, absoluta);
 
                 arquivo.close();
 
@@ -41,5 +45,20 @@ public class ClienteValidation {
         }
 
         return "Nao foi possivel cadastrar o cliente especificado";
+    }
+    public static List<String> Visualizar(){
+        String atributosInserir = "";
+        File f = new File("Cliente.txt");
+        String absoluta = f.getAbsolutePath().replace("Console", "DAO\\src\\ArquivoBancoDados");
+        ClienteRepositorioArquivo clienteRepositorio  = new ClienteRepositorioArquivo();
+        return clienteRepositorio.ObterTodos(absoluta);
+    }
+    public static void Excluir(int id){
+        File f = new File("Cliente.txt");
+        String absoluta = f.getAbsolutePath().replace("Console", "DAO\\src\\ArquivoBancoDados");
+        ClienteRepositorioArquivo clienteRepositorio  = new ClienteRepositorioArquivo();
+        clienteRepositorio.Remover(id, absoluta);
+
+        
     }
 }
