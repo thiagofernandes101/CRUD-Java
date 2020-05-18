@@ -14,31 +14,27 @@ import java.util.List;
  * @author 082170029
  */
 public class Pedido extends PadraoVO {
-    public Pedido()
-    {
+
+    public Pedido() {
         listaProdutos = new ArrayList<Produto>();
     }
 
-    public String getDescricao()
-    {
+    public String getDescricao() {
         return _descricao;
     }
 
-    public void setDescricao(String _descricao)
-    {
+    public void setDescricao(String _descricao) {
         this._descricao = _descricao;
     }
 
-    public List<Produto> getListaProdutos()
-    {
+    public List<Produto> getListaProdutos() {
         return listaProdutos;
     }
 
-    public void setListaProdutos(List<Produto> listaProdutos)
-    {
+    public void setListaProdutos(List<Produto> listaProdutos) {
         this.listaProdutos = listaProdutos;
     }
-    
+
     private String _descricao;
     private List<Produto> listaProdutos;
 }
