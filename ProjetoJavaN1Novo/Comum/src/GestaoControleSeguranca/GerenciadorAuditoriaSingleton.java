@@ -5,6 +5,7 @@
  */
 package GestaoControleSeguranca;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.LinkedList;
@@ -23,12 +24,12 @@ public class GerenciadorAuditoriaSingleton {
     private static GerenciadorAuditoriaSingleton instancia;
     
     private GerenciadorAuditoriaSingleton() {
-        try {
-            this.arquivo = new FileWriter("c:/teste.log");
+      
+            File f = new File("MensagemSeguranca.txt");
+            String absoluta = f.getAbsolutePath().replace("Console", "DAO\\src\\ArquivoBancoDados");
+           //  this.arquivo = new FileWriter("c:/teste.log");
             this.filaMensagemAuditoria = new LinkedList<String>();
-        } catch (IOException ex) {
-            Logger.getLogger(GerenciadorAuditoriaSingleton.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
     }
     
     public static synchronized GerenciadorAuditoriaSingleton getInstance() {
