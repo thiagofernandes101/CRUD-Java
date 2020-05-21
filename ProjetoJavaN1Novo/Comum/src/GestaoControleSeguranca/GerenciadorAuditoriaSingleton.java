@@ -6,14 +6,10 @@
 package GestaoControleSeguranca;
 
 import GestaoControleSeguranca.ThreadsRunnable.ThreadGestaoMensagensAuditoria;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import sun.util.logging.PlatformLogger;
 
 /**
  *
