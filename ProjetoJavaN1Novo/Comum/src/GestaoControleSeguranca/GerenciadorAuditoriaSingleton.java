@@ -5,6 +5,7 @@
  */
 package GestaoControleSeguranca;
 
+import GestaoControleSeguranca.ThreadsRunnable.ThreadGestaoMensagensAuditoria;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -19,42 +20,51 @@ import sun.util.logging.PlatformLogger;
  * @author thiag
  */
 public class GerenciadorAuditoriaSingleton {
-    private FileWriter arquivo;
+    private ThreadGestaoMensagensAuditoria threadMensagensAuditoria;
     private Queue<String> filaMensagemAuditoria;
     private static GerenciadorAuditoriaSingleton instancia;
-    
+
     private GerenciadorAuditoriaSingleton() {
-      
-            File f = new File("MensagemSeguranca.txt");
-            String absoluta = f.getAbsolutePath().replace("Console", "DAO\\src\\ArquivoBancoDados");
-           //  this.arquivo = new FileWriter("c:/teste.log");
-            this.filaMensagemAuditoria = new LinkedList<String>();
+        // File f = new File("MensagemSeguranca.txt");
+        // String absoluta = f.getAbsolutePath().replace("Console", "DAO\\src\\ArquivoBancoDados");
         
+        this.filaMensagemAuditoria = new LinkedList<String>();
+        threadMensagensAuditoria = new ThreadGestaoMensagensAuditoria();
     }
-    
+
     public static synchronized GerenciadorAuditoriaSingleton getInstance() {
         if (instancia == null) {
             instancia = new GerenciadorAuditoriaSingleton();
         }
+        
         return instancia;
     }
-    
+
     public void adicionaMensagemAuditoria(String mensagem) {
-        // adicionar mensagens de envio na fila de mensagens
-        // método add adiciona elementos na fila
+        filaMensagemAuditoria.add(mensagem);
     }
     
+    public String obterMensagemAuditoria() {
+        String mensagemAuditoria = filaMensagemAuditoria.peek();
+        return mensagemAuditoria;
+    }
+
     public String retiraMensagemAuditoria() {
-        // retirar as mensagens da fila confirme forem enviadas pelo métodos de envio da thread
-        // método poll retira os elements da fila
-        return "";
+        String retornoExclusaoMensagem = filaMensagemAuditoria.poll();
+        return retornoExclusaoMensagem;
     }
-    
+
     public void ativar() {
-        // ativar a thread
+        threadMensagensAuditoria.start();
     }
-    
+
     public void desativar() {
-        // desativar a thread
+        while (threadMensagensAuditoria.isAlive()) {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(GerenciadorAuditoriaSingleton.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
 }
