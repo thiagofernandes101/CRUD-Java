@@ -5,6 +5,7 @@
  */
 package Validation;
 
+import GestaoControleSeguranca.GerenciadorAuditoriaSingleton;
 import static Global.GerarId.GerarIdArquivo;
 import Repositorios.FuncionarioRepositorioArquivo;
 import Repositorios.ProdutoRepositorioArquivo;
@@ -32,15 +33,16 @@ public class ProdutoValidation {
             BufferedReader arquivo = new BufferedReader(new FileReader(absoluta));
 
             atributosInserir = id + ";" + produto.getNome() + ";" + produto.getDesricao() + ";" + produto.getPreco();
-
             produtoRepositorio.Incluir(atributosInserir, absoluta);
 
             arquivo.close();
-
+            GerenciadorAuditoriaSingleton.getInstance().adicionaMensagemAuditoria("Produto cadastrado com sucesso");
+            
             return "Produto cadastrado com sucesso";
 
         }
-
+        GerenciadorAuditoriaSingleton.getInstance().adicionaMensagemAuditoria("Nao foi possivel cadastrar o produto especificado");
+    
         return "Nao foi possivel cadastrar o produto especificado";
     }
     public static List<String> Visualizar(){
@@ -48,12 +50,14 @@ public class ProdutoValidation {
         File f = new File("Produto.txt");
         String absoluta = f.getAbsolutePath().replace("Console", "DAO\\src\\ArquivoBancoDados");
         ProdutoRepositorioArquivo produtoRepositorio  = new ProdutoRepositorioArquivo();
+        GerenciadorAuditoriaSingleton.getInstance().adicionaMensagemAuditoria("Produto vizualizado com sucesso");
         return produtoRepositorio.ObterTodos(absoluta);
     }
     public static void Excluir(int id){
         File f = new File("Produto.txt");
         String absoluta = f.getAbsolutePath().replace("Console", "DAO\\src\\ArquivoBancoDados");
         ProdutoRepositorioArquivo produtoRepositorio  = new ProdutoRepositorioArquivo();
+        GerenciadorAuditoriaSingleton.getInstance().adicionaMensagemAuditoria("Produto excluido com sucesso");
         produtoRepositorio.Remover(id, absoluta);
 
         

@@ -5,6 +5,7 @@
  */
 package Validation;
 
+import GestaoControleSeguranca.GerenciadorAuditoriaSingleton;
 import Repositorios.ClienteRepositorioArquivo;
 import VO.Cliente.Cliente;
 import java.io.BufferedReader;
@@ -39,26 +40,28 @@ public class ClienteValidation {
                 clienteRepositorio.Incluir(atributosInserir, absoluta);
 
                 arquivo.close();
-
+GerenciadorAuditoriaSingleton.getInstance().adicionaMensagemAuditoria("Cliente cadastrado com sucesso");
                 return "Cliente cadastrado com sucesso";
             }
         }
-
+GerenciadorAuditoriaSingleton.getInstance().adicionaMensagemAuditoria("Nao foi possivel cadastrar o cliente especificado");
         return "Nao foi possivel cadastrar o cliente especificado";
     }
     public static List<String> Visualizar(){
         String atributosInserir = "";
         File f = new File("Cliente.txt");
         String absoluta = f.getAbsolutePath().replace("Console", "DAO\\src\\ArquivoBancoDados");
-        ClienteRepositorioArquivo clienteRepositorio  = new ClienteRepositorioArquivo();
+        ClienteRepositorioArquivo clienteRepositorio  = new ClienteRepositorioArquivo();      
+        GerenciadorAuditoriaSingleton.getInstance().adicionaMensagemAuditoria("Cliente visualizado com sucesso");
         return clienteRepositorio.ObterTodos(absoluta);
+        
     }
     public static void Excluir(int id){
         File f = new File("Cliente.txt");
         String absoluta = f.getAbsolutePath().replace("Console", "DAO\\src\\ArquivoBancoDados");
         ClienteRepositorioArquivo clienteRepositorio  = new ClienteRepositorioArquivo();
         clienteRepositorio.Remover(id, absoluta);
-
+        GerenciadorAuditoriaSingleton.getInstance().adicionaMensagemAuditoria("Cliente excluido com sucesso");
         
     }
 }

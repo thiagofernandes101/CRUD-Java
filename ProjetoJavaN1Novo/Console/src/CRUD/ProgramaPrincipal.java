@@ -9,6 +9,7 @@ import ConfiguracaoCrud.Configuracao;
 import Enum.TipoRepositorio;
 import EnumEstadosConsole.EnumEstadoConsole;
 import EstadosConsole.MaquinaEstadoConsole;
+import GestaoControleSeguranca.GerenciadorAuditoriaSingleton;
 
 /**
  *
@@ -24,14 +25,16 @@ public class ProgramaPrincipal {
     public static void main(String[] args) {
         // TODO code application logic here
         boolean saida = false;
-
+     GerenciadorAuditoriaSingleton.getInstance().ativar(); 
         Configuracao.ObterInstancia().setDataBase(TipoRepositorio.MySql);
         maquinaEstadoConsole = EnumEstadoConsole.BemVindo.getMaquinaEstadoConsole();
 
         while (!saida)
         {
             saida = maquinaEstadoConsole.ExecutarMaquinaEstado();
+            GerenciadorAuditoriaSingleton.getInstance().Run();
         }
+        GerenciadorAuditoriaSingleton.getInstance().desativar();
     }
     
 }

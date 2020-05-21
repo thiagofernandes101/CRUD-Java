@@ -11,6 +11,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -32,12 +34,17 @@ public class ThreadGestaoMensagensAuditoria extends Thread {
 
     private void enviarMensagemParaSistemaAuditoria(String mensagem) {
         File file = new File("MensagemSeguranca.txt");
-        String absoluta = file.getAbsolutePath().replace("Console", "DAO\\src\\ArquivoBancoDados");
-        
+        String absoluta = file.getAbsolutePath().replace("Console", "DAO\\src\\ArquivoBancoDados");        
+        PrintWriter escrever = null;
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
         try {
-            PrintWriter escrever = new PrintWriter(new BufferedWriter(new FileWriter(absoluta, true)));
+            escrever = new PrintWriter(new BufferedWriter(new FileWriter(absoluta, true)));
         } catch (IOException ex) {
             Logger.getLogger(ThreadGestaoMensagensAuditoria.class.getName()).log(Level.SEVERE, null, ex);
         }
+        escrever.println(mensagem + "  " + dtf.format(now));
+        escrever.flush();
+        
     }
 }

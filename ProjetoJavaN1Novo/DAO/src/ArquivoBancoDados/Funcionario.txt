@@ -1,2 +1,9 @@
 0;admin;gerente;admin;123
-2;thiagi;vendedor;thiago;1234
+2;thiagi;vendedor;thiago;12343
+3;gabi;funcionario;gabi;12345
+4;teste;funcionario;teste;123
+5;pat;funci;pat;123
+6;gaia;gato;gaia;123
+7;gaiaaaaa;gatooooo;gaiaaaaa;123
+8;gabbiii;func;gabi;123
+9;teste;teste;teste;123

@@ -16,6 +16,7 @@ import java.util.logging.Logger;
  * @author thiag
  */
 public class GerenciadorAuditoriaSingleton {
+
     private ThreadGestaoMensagensAuditoria threadMensagensAuditoria;
     private Queue<String> filaMensagemAuditoria;
     private static GerenciadorAuditoriaSingleton instancia;
@@ -23,7 +24,7 @@ public class GerenciadorAuditoriaSingleton {
     private GerenciadorAuditoriaSingleton() {
         // File f = new File("MensagemSeguranca.txt");
         // String absoluta = f.getAbsolutePath().replace("Console", "DAO\\src\\ArquivoBancoDados");
-        
+
         this.filaMensagemAuditoria = new LinkedList<String>();
         threadMensagensAuditoria = new ThreadGestaoMensagensAuditoria();
     }
@@ -32,15 +33,15 @@ public class GerenciadorAuditoriaSingleton {
         if (instancia == null) {
             instancia = new GerenciadorAuditoriaSingleton();
         }
-        
+
         return instancia;
     }
 
     public void adicionaMensagemAuditoria(String mensagem) {
         filaMensagemAuditoria.add(mensagem);
     }
-    
-    public String obterMensagemAuditoria() {
+
+       public String obterMensagemAuditoria() {
         String mensagemAuditoria = filaMensagemAuditoria.peek();
         return mensagemAuditoria;
     }
@@ -51,16 +52,19 @@ public class GerenciadorAuditoriaSingleton {
     }
 
     public void ativar() {
-        threadMensagensAuditoria.start();
+        
+            threadMensagensAuditoria.start();
+        
     }
-
+ public void Run() {
+        threadMensagensAuditoria.run();
+    }
     public void desativar() {
-        while (threadMensagensAuditoria.isAlive()) {
             try {
-                Thread.sleep(1000);
+                threadMensagensAuditoria.join();
             } catch (InterruptedException ex) {
                 Logger.getLogger(GerenciadorAuditoriaSingleton.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
+        
     }
 }

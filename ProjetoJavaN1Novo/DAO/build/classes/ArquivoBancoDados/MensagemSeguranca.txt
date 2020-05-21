@@ -1,0 +1,5 @@
+Funcionario cadastrado com sucesso  21/05/2020 20:26:14
+Produto cadastrado com sucesso  21/05/2020 20:26:32
+Produto excluido com sucesso  21/05/2020 20:26:50
+Funcionario excluido com sucesso  21/05/2020 20:27:07
+Cliente cadastrado com sucesso  21/05/2020 20:27:31

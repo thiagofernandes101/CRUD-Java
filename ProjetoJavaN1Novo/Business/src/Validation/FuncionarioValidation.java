@@ -5,6 +5,7 @@
  */
 package Validation;
 
+import GestaoControleSeguranca.GerenciadorAuditoriaSingleton;
 import static Global.GerarId.GerarIdArquivo;
 import Repositorios.ClienteRepositorioArquivo;
 import Repositorios.FuncionarioRepositorioArquivo;
@@ -31,22 +32,22 @@ public class FuncionarioValidation {
             int id = GerarIdArquivo(absoluta);
             BufferedReader arquivo = new BufferedReader(new FileReader(absoluta));
 
-            if (id == 1) {
+            //if (id == 1) {
                 atributosInserir = id + ";" + funcionario.getNome() + ";" + funcionario.getCargo() + ";" + funcionario.getUsuario().getLogin() + ";" + funcionario.getUsuario().getSenha();
 
-            } else {
-                atributosInserir = id + ";" + funcionario.getNome() + ";" + funcionario.getCargo() + ";" + funcionario.getUsuario().getLogin() + ";" + funcionario.getUsuario().getSenha();
+            //} else {
+              //  atributosInserir = id + ";" + funcionario.getNome() + ";" + funcionario.getCargo() + ";" + funcionario.getUsuario().getLogin() + ";" + funcionario.getUsuario().getSenha();
 
-            }
+            //}
 
             funcionarioRepositorio.Incluir(atributosInserir, absoluta);
 
             arquivo.close();
-
+GerenciadorAuditoriaSingleton.getInstance().adicionaMensagemAuditoria("Funcionario cadastrado com sucesso");
             return "Funcionario cadastrado com sucesso";
 
         }
-
+GerenciadorAuditoriaSingleton.getInstance().adicionaMensagemAuditoria("Nao foi possivel cadastrar o funcionario especificado");
         return "Nao foi possivel cadastrar o funcionario especificado";
     }
     public static List<String> Visualizar(){
@@ -54,13 +55,16 @@ public class FuncionarioValidation {
         File f = new File("Funcionario.txt");
         String absoluta = f.getAbsolutePath().replace("Console", "DAO\\src\\ArquivoBancoDados");
         FuncionarioRepositorioArquivo funcionarioRepositorio  = new FuncionarioRepositorioArquivo();
+        GerenciadorAuditoriaSingleton.getInstance().adicionaMensagemAuditoria("Funcionario visualizado com sucesso");
         return funcionarioRepositorio.ObterTodos(absoluta);
+        
     }
     public static void Excluir(int id){
         File f = new File("Funcionario.txt");
         String absoluta = f.getAbsolutePath().replace("Console", "DAO\\src\\ArquivoBancoDados");
         FuncionarioRepositorioArquivo funcionarioRepositorio  = new FuncionarioRepositorioArquivo();
         funcionarioRepositorio.Remover(id, absoluta);
+        GerenciadorAuditoriaSingleton.getInstance().adicionaMensagemAuditoria("Funcionario excluido com sucesso");
 
         
     }

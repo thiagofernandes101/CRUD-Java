@@ -7,6 +7,7 @@ package EstadosConsole;
 
 import Crud.ProgramaPrincipal;
 import EnumEstadosConsole.EnumEstadoConsole;
+import GestaoControleSeguranca.GerenciadorAuditoriaSingleton;
 import Login.Acesso;
 import VO.Acesso.Usuario;
 import java.io.FileNotFoundException;
@@ -42,6 +43,7 @@ public class EstadoConsoleLogin extends MaquinaEstadoConsole {
     
     private static boolean ApresentacaoLogin() throws FileNotFoundException, IOException
     {
+     
         boolean sair = false;
         String retornoCargoFuncionario;
 
@@ -51,7 +53,7 @@ public class EstadoConsoleLogin extends MaquinaEstadoConsole {
 
         System.out.flush();
         System.out.println("**** Login ****\n");
-
+      
         do
         {
             System.out.print("Digite seu usuario: ");

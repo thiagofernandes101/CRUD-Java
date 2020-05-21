@@ -5,6 +5,7 @@
  */
 package Login;
 
+import GestaoControleSeguranca.GerenciadorAuditoriaSingleton;
 import VO.Acesso.Usuario;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -23,6 +24,7 @@ public class Acesso {
             if (!usuario.getLogin().isEmpty() && !usuario.getSenha().isEmpty())
             {
                 loginESenhaValido = true;
+                
             }
         }
 

@@ -5,6 +5,7 @@
  */
 package EstadosConsole;
 
+import GestaoControleSeguranca.GerenciadorAuditoriaSingleton;
 import VO.Acesso.Funcionario;
 import VO.Acesso.Usuario;
 import VO.Cliente.Cliente;
@@ -93,6 +94,7 @@ public class EstadoConsoleGerente extends MaquinaEstadoConsole {
                 ClienteValidation.IncluirValidation(cliente);
                 break;
             case "5":
+                
                 sair = true;
                 break;
             case "11":
