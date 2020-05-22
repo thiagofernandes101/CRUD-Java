@@ -59,7 +59,7 @@ GerenciadorAuditoriaSingleton.getInstance().adicionaMensagemAuditoria("Nao foi p
         return funcionarioRepositorio.ObterTodos(absoluta);
         
     }
-    public static void Excluir(int id){
+    public static void Excluir(long id){
         File f = new File("Funcionario.txt");
         String absoluta = f.getAbsolutePath().replace("Console", "DAO\\src\\ArquivoBancoDados");
         FuncionarioRepositorioArquivo funcionarioRepositorio  = new FuncionarioRepositorioArquivo();

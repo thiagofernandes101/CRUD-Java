@@ -20,5 +20,5 @@ public interface IRepositorio<TEntity> {
     
     void Atualizar(String atributosAtualizar, String caminhoArquivo);
     
-    void Remover(int id, String caminhoArquivo);
+    void Remover(long id, String caminhoArquivo);
 }

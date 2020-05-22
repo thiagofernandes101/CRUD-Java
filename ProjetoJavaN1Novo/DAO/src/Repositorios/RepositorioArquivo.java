@@ -74,18 +74,21 @@ public abstract class RepositorioArquivo<TEntity> implements IRepositorio<TEntit
     }
 
     @Override
-    public void Remover(int id, String caminhoArquivo) {
+    public void Remover(long id, String caminhoArquivo) {
         List<String> lista = new ArrayList<String>();
         List<String> listaNova = new ArrayList<String>();
         lista = ObterTodos(caminhoArquivo);
+        
         for (int i = 0; i < lista.size(); i++) {
-            if(Integer.parseInt(lista.get(i).split(";")[0]) != id){
+            if(Long.parseLong(lista.get(i).split(";")[0]) != id){
                 listaNova.add(lista.get(i));
             }
             
         }
+        
         File f = new File(caminhoArquivo);
         f.delete();
+        
         try {
             FileOutputStream out = new FileOutputStream(caminhoArquivo);
             for (int i = 0; i < listaNova.size(); i++) {
@@ -97,7 +100,5 @@ public abstract class RepositorioArquivo<TEntity> implements IRepositorio<TEntit
         } catch (IOException ex) {
             Logger.getLogger(RepositorioArquivo.class.getName()).log(Level.SEVERE, null, ex);
         }
-       
     }
-
 }

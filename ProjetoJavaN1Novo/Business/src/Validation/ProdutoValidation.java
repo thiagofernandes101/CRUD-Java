@@ -53,7 +53,7 @@ public class ProdutoValidation {
         GerenciadorAuditoriaSingleton.getInstance().adicionaMensagemAuditoria("Produto vizualizado com sucesso");
         return produtoRepositorio.ObterTodos(absoluta);
     }
-    public static void Excluir(int id){
+    public static void Excluir(long id){
         File f = new File("Produto.txt");
         String absoluta = f.getAbsolutePath().replace("Console", "DAO\\src\\ArquivoBancoDados");
         ProdutoRepositorioArquivo produtoRepositorio  = new ProdutoRepositorioArquivo();

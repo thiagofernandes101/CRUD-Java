@@ -95,7 +95,7 @@ public class EstadoConsoleVendedor extends MaquinaEstadoConsole {
             case "12":
                 Scanner lerProduto = new Scanner(System.in);
                 System.out.print("Digite o id do produto que deseja excluir:");
-                ProdutoValidation.Excluir(Integer.parseInt(lerProduto.next()));
+                ProdutoValidation.Excluir(Long.parseLong(lerProduto.next()));
                 List<String> listaProduto = ProdutoValidation.Visualizar();
                 for (int i = 0; i < listaProduto.size(); i++) {
                     System.out.println("------------------------------------");
@@ -123,7 +123,7 @@ public class EstadoConsoleVendedor extends MaquinaEstadoConsole {
              case "32":
                 Scanner lerCli = new Scanner(System.in);
                 System.out.print("Digite o cpf do cliente que deseja excluir:");
-                ClienteValidation.Excluir(Integer.parseInt(lerCli.next()));
+                ClienteValidation.Excluir(Long.parseLong(lerCli.next()));
                 List<String> listaCli = ClienteValidation.Visualizar();
                 for (int i = 0; i < listaCli.size(); i++) {
                     System.out.println("------------------------------------");

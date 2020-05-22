@@ -94,93 +94,90 @@ public class EstadoConsoleGerente extends MaquinaEstadoConsole {
                 ClienteValidation.IncluirValidation(cliente);
                 break;
             case "5":
-                
+
                 sair = true;
                 break;
             case "11":
                 List<String> listaF = FuncionarioValidation.Visualizar();
                 for (int i = 0; i < listaF.size(); i++) {
                     System.out.println("------------------------------------");
-                    System.out.printf("id: %s\n",listaF.get(i).split(";")[0]);                    
-                    System.out.printf("Nome: %s\n",listaF.get(i).split(";")[1]);
-                    System.out.printf("Cargo: %s\n",listaF.get(i).split(";")[2]);
+                    System.out.printf("id: %s\n", listaF.get(i).split(";")[0]);
+                    System.out.printf("Nome: %s\n", listaF.get(i).split(";")[1]);
+                    System.out.printf("Cargo: %s\n", listaF.get(i).split(";")[2]);
                     System.out.println("------------------------------------");
-                   
-                    
+
                 }
                 break;
             case "12":
                 Scanner lerFuncionario = new Scanner(System.in);
                 System.out.print("Digite o id do funcionario que deseja excluir:");
-                FuncionarioValidation.Excluir(Integer.parseInt(lerFuncionario.next()));
+                FuncionarioValidation.Excluir(Long.parseLong(lerFuncionario.next()));
                 List<String> listaFuncionario = FuncionarioValidation.Visualizar();
                 for (int i = 0; i < listaFuncionario.size(); i++) {
-                   System.out.println("------------------------------------");
-                    System.out.printf("id: %s\n",listaFuncionario.get(i).split(";")[0]);                    
-                    System.out.printf("Nome: %s\n",listaFuncionario.get(i).split(";")[1]);
-                    System.out.printf("Cargo: %s\n",listaFuncionario.get(i).split(";")[2]);
                     System.out.println("------------------------------------");
-                   
-                    
+                    System.out.printf("id: %s\n", listaFuncionario.get(i).split(";")[0]);
+                    System.out.printf("Nome: %s\n", listaFuncionario.get(i).split(";")[1]);
+                    System.out.printf("Cargo: %s\n", listaFuncionario.get(i).split(";")[2]);
+                    System.out.println("------------------------------------");
+
                 }
-                    break;
+                break;
             case "21":
                 List<String> listaP = ProdutoValidation.Visualizar();
                 for (int i = 0; i < listaP.size(); i++) {
                     System.out.println("------------------------------------");
-                    System.out.printf("id: %s\n",listaP.get(i).split(";")[0]);                    
-                    System.out.printf("Nome: %s\n",listaP.get(i).split(";")[1]);
-                    System.out.printf("Descrição: %s\n",listaP.get(i).split(";")[2]);
-                    System.out.printf("Preço: %s\n",listaP.get(i).split(";")[3]);
+                    System.out.printf("id: %s\n", listaP.get(i).split(";")[0]);
+                    System.out.printf("Nome: %s\n", listaP.get(i).split(";")[1]);
+                    System.out.printf("Descrição: %s\n", listaP.get(i).split(";")[2]);
+                    System.out.printf("Preço: %s\n", listaP.get(i).split(";")[3]);
                     System.out.println("------------------------------------");
-                   
-                    
+
                 }
                 break;
             case "22":
                 Scanner lerProduto = new Scanner(System.in);
                 System.out.print("Digite o id do produto que deseja excluir:");
-                ProdutoValidation.Excluir(Integer.parseInt(lerProduto.next()));
+                ProdutoValidation.Excluir(Long.parseLong(lerProduto.next()));
                 List<String> listaProduto = ProdutoValidation.Visualizar();
                 for (int i = 0; i < listaProduto.size(); i++) {
                     System.out.println("------------------------------------");
-                    System.out.printf("id: %s\n",listaProduto.get(i).split(";")[0]);                    
-                    System.out.printf("Nome: %s\n",listaProduto.get(i).split(";")[1]);
-                    System.out.printf("Descrição: %s\n",listaProduto.get(i).split(";")[2]);
-                    System.out.printf("Preço: %s\n",listaProduto.get(i).split(";")[3]);
+                    System.out.printf("id: %s\n", listaProduto.get(i).split(";")[0]);
+                    System.out.printf("Nome: %s\n", listaProduto.get(i).split(";")[1]);
+                    System.out.printf("Descrição: %s\n", listaProduto.get(i).split(";")[2]);
+                    System.out.printf("Preço: %s\n", listaProduto.get(i).split(";")[3]);
                     System.out.println("------------------------------------");
-                   
-                    
+
                 }
-                    break;
+                break;
             case "31":
                 break;
             case "41":
                 List<String> listaC = ClienteValidation.Visualizar();
                 for (int i = 0; i < listaC.size(); i++) {
                     System.out.println("------------------------------------");
-                    System.out.printf("CPF: %s\n",listaC.get(i).split(";")[0]);                    
-                    System.out.printf("Nome: %s\n",listaC.get(i).split(";")[1]);
+                    System.out.printf("CPF: %s\n", listaC.get(i).split(";")[0]);
+                    System.out.printf("Nome: %s\n", listaC.get(i).split(";")[1]);
                     System.out.println("------------------------------------");
-                   
-                    
+
                 }
                 break;
-             case "42":
+            case "42":
                 Scanner lerCli = new Scanner(System.in);
                 System.out.print("Digite o cpf do cliente que deseja excluir:");
-                ClienteValidation.Excluir(Integer.parseInt(lerCli.next()));
+
+                ClienteValidation.Excluir(Long.parseLong(lerCli.next()));
+
                 List<String> listaCli = ClienteValidation.Visualizar();
+
                 for (int i = 0; i < listaCli.size(); i++) {
                     System.out.println("------------------------------------");
-                    System.out.printf("CPF: %s\n",listaCli.get(i).split(";")[0]);                    
-                    System.out.printf("Nome: %s\n",listaCli.get(i).split(";")[1]);
+                    System.out.printf("CPF: %s\n", listaCli.get(i).split(";")[0]);
+                    System.out.printf("Nome: %s\n", listaCli.get(i).split(";")[1]);
                     System.out.println("------------------------------------");
-                   
-                    
+
                 }
-                    break;
-            
+
+                break;
         }
 
         return sair;
@@ -189,7 +186,7 @@ public class EstadoConsoleGerente extends MaquinaEstadoConsole {
     private static void MenuGerente() {
         System.out.println("Escolha a opcao desejada:");
         System.out.println("1 - Cadastrar funcionario");
-        System.out.println("11 - Visualizar funcionario");       
+        System.out.println("11 - Visualizar funcionario");
         System.out.println("12 - Excluir funcionario");
         System.out.println("2 - Cadastrar produto");
         System.out.println("21 - Visualizar produto");
@@ -199,12 +196,12 @@ public class EstadoConsoleGerente extends MaquinaEstadoConsole {
         System.out.println("32 - Excluir pedido");
         System.out.println("4 - Cadastrar clientes");
         System.out.println("41 - Visualizar clientes");
-        System.out.println("42 - Excluir cliente"); 
+        System.out.println("42 - Excluir cliente");
         System.out.println("5 - Sair");
     }
 
     private static boolean ValidaOpcao(String opcao) {
-        if (!"1".equals(opcao) && !"2".equals(opcao) && !"3".equals(opcao) && !"4".equals(opcao) && !"5".equals(opcao) && !"41".equals(opcao)  && !"42".equals(opcao)  && !"31".equals(opcao) && !"32".equals(opcao) && !"21".equals(opcao) && !"22".equals(opcao) && !"11".equals(opcao) && !"12".equals(opcao)) {
+        if (!"1".equals(opcao) && !"2".equals(opcao) && !"3".equals(opcao) && !"4".equals(opcao) && !"5".equals(opcao) && !"41".equals(opcao) && !"42".equals(opcao) && !"31".equals(opcao) && !"32".equals(opcao) && !"21".equals(opcao) && !"22".equals(opcao) && !"11".equals(opcao) && !"12".equals(opcao)) {
             System.out.println("Por favor informe uma opcao valida");
             return true;
         }
